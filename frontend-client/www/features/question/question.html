@@ -1,5 +1,7 @@
 <ion-pane>
 <ion-content>
-<p>Test</p>
+<div ng-repeat="question in questions.possibleAns">
+<button ng-click="selectAwnser($index)">{{question}}</button>
+</div>
 </ion-content>
 </ion-pane>

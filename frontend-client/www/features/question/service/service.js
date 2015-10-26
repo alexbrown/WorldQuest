@@ -23,6 +23,7 @@ angular.module('WorldQuest.question.services', [])
 	return{
 		all:function(){
 			return question;
-		}
+		},
+		sendAnswer: sendAnswer
 	}
 })
