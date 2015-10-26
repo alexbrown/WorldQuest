@@ -7,6 +7,8 @@ app.controller('QuestionCtrl', function($scope, $timeout, $state, Questions){
 	$scope.questions = Questions.all();
 	$scope.questionID= Questions.all().id;
 	$scope.teamID = 12;
+	$scope.response = {};
+
 
 	/*
 	Timer functionality variables
@@ -21,8 +23,15 @@ app.controller('QuestionCtrl', function($scope, $timeout, $state, Questions){
 		if (typeof newVal !== 'undefined') {
         $scope.questions = newVal;
         $scope.questionID = newVal.id;
+        $scope.response = {};
         
         console.log(newVal);
+    }});
+
+    $scope.$watch(function(){return Questions.getLastQuestion();}, function(newVal, oldVal) {
+		if (typeof newVal !== 'undefined') {
+        $scope.response = newVal;
+        
     }});
 
     /*
@@ -36,7 +45,8 @@ app.controller('QuestionCtrl', function($scope, $timeout, $state, Questions){
 			timeAnswered: $scope.counter
 		}
 		Questions.sendAnswer(answer);
-		console.log(answer);
+		this.stopTimer();
+        console.log($scope.response);
         $state.go('submission');
 	}
 
@@ -74,7 +84,7 @@ app.controller('QuestionCtrl', function($scope, $timeout, $state, Questions){
             Questions.sendAnswer(noAnswer);
               }
     });
-	$scope.$on('$ionicView.enter', $scope.startTimer())
+	$scope.$on('$ionicView.beforeEnter', $scope.startTimer())
 })
 
 
