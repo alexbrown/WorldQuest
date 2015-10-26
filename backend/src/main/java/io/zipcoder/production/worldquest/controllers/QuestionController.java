@@ -14,7 +14,6 @@ public class QuestionController {
     public Question getQuestion(){
         String[] answers = new String[]{"Tokyo","Beijing","Pyeongchang","Almaty"};
         Question question = new Question("Which city is the host of 2022 Winter Olympic Games?", answers, 1);
-
-        
+        return question;
     }
 }
