@@ -23,13 +23,13 @@ public class TeamController {
     @ResponseBody
     @RequestMapping(value="/team/auth",method = RequestMethod.POST)
     public Team authenticate(String name, String password) {
-        Team team = null;
+        Team authorizedTeam = null;
 
-        if(teams.containsKey(name)) {
-            team = teams.get(name);
+        if(teams.containsKey(name) && teams.get(name).getHash().equals(password)) {
+            authorizedTeam = teams.get(name);
         }
 
         //String response = team != null && team.getHash().equals(password) ? "true" : "false";
-        return team;
+        return authorizedTeam;
     }
 }
