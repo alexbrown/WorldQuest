@@ -1,6 +1,6 @@
 var app = angular.module('WorldQuest.question.controller', []);
 
-app.controller('QuestionCtrl', function($scope, $timeout, Questions){
+app.controller('QuestionCtrl', function($scope, $timeout, $state, Questions){
 	/*
 	Required references to the Question object
 	*/
@@ -37,6 +37,7 @@ app.controller('QuestionCtrl', function($scope, $timeout, Questions){
 		}
 		Questions.sendAnswer(answer);
 		console.log(answer);
+        $state.go('submission');
 	}
 
  // the current timeoutID
@@ -61,8 +62,16 @@ app.controller('QuestionCtrl', function($scope, $timeout, Questions){
     };
     // triggered, when the timer stops, you can do something here, maybe show a visual indicator or vibrate the device
     $scope.$on('timer-stopped', function(event, remaining) {
+        var noAnswer = {
+            questionID: 1,
+            teamID: $scope.teamID,
+            answerIndex: -9001,
+            timeAnswered: $scope.counter
+        };
         if(remaining === 0) {
-            console.log('You did not answer the question in time.');
+            $state.go('noSubmission');
+
+            Questions.sendAnswer(noAnswer);
               }
     });
 	$scope.$on('$ionicView.enter', $scope.startTimer())
