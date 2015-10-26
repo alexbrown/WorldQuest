@@ -13,18 +13,24 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 public class AnswerDecisionEngineController {
 
+    String[] answers = new String[]{"Tokyo","Beijing","Pyeongchang","Almaty"};
+    Question question = new Question("Which city is the host of 2022 Winter Olympic Games?", answers, 1);
+
     @RequestMapping(value = "/question", method = RequestMethod.GET)
     @ResponseBody
     public Question getQuestion(){
-        String[] answers = new String[]{"Tokyo","Beijing","Pyeongchang","Almaty"};
-        Question question = new Question("Which city is the host of 2022 Winter Olympic Games?", answers, 1);
         return question;
     }
 
     @RequestMapping(value="/answer", method = RequestMethod.GET)
     @ResponseBody
-    public Answer sendAnswer(Integer questionID, Integer teamID, Integer answerIndex){
+    public boolean sendAnswer(Integer questionID, Integer teamID, Integer answerIndex){
         Answer answer = new Answer(questionID, teamID, answerIndex);
-        return answer;
+        if(question.getCorrectIndex()==answerIndex){
+            return true;
+        }
+        else{
+            return false;
+        }
     }
 }
