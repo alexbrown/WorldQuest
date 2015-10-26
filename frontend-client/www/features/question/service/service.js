@@ -1,25 +1,28 @@
-var app = angular.module('WorldQuest.question.controller', []);
+angular.module('WorldQuest.question.services', [])
 
-app.controller('QuestionCtrl', function($scope, Questions){
-	$scope.questions = Questions.all();
-	$scope.questionID= Questions.all().id;
-	$scope.teamID = 12;
+.factory('Questions', function($http){
+	var question = {}
 
-	$scope.$watch(function(){return Questions.all();}, function(newVal, oldVal) {
-		if (typeof newVal !== 'undefined') {
-        $scope.questions = newVal;
-        $scope.questionID = newVal.id;
-        console.log(newVal);
-    }});
+	$http({
+		method: 'GET',
+		url:'http://localhost:8080/question'
+	}).then(function successCallback(response){
+		question = response.data;
+	});
 
-
-	$scope.selectedAnswer = function(index){
-		var answer = {
-			questionID: $scope.questionID,
-			teamID: $scope.teamID,
-			answerIndex: index
-		}
-		Questions.sendAnswer(answer);
+	function sendAnswer(answer){
+		$http({
+			method: 'GET',
+			url: 'http://localhost:8080/answer?questionID='+ answer.questionID + '&teamID='+12+'&answerIndex='+ answer.answerIndex 
+		}).then(function successCallback(output){
+			console.log(output)
+		})
 	}
 
+	return{
+		all:function(){
+			return question;
+		},
+		sendAnswer: sendAnswer
+	}
 })
