@@ -1,5 +1,24 @@
 <ion-pane>
-<ion-content>
-<p>Test</p>
-</ion-content>
+	<ion-content>
+<<<<<<< HEAD
+	<p onload= 'startTimer()'>
+    {{counter}}
+    
+    
+ </p>
+=======
+>>>>>>> 67436ff25ab4b191963278e67a5cc664de890189
+
+	<h1>Question</h1>
+	<div ng-bind="questions.problem"></div>
+
+	<form>
+		<div ng-repeat="answer in questions.possibleAns">
+			<input type = "button" value={{answer}} ng-click="selectedAnswer($index)">
+
+			</input></div>
+			
+	</form>
+
+	</ion-content>
 </ion-pane>

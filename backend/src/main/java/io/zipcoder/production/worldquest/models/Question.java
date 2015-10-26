@@ -85,8 +85,6 @@ public class Question {
         this.answer_d = answer_d;
     }
 
-
-
     public void setProblem(String problem) {
         this.problem = problem;
     }
@@ -116,10 +114,7 @@ public class Question {
         return correctIndex;
     }
 
-
-
     public int getId() {
-
         return id;
     }
 }
