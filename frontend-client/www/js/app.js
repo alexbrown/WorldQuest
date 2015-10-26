@@ -17,3 +17,18 @@ angular.module('starter', ['ionic'])
     }
   });
 })
+
+.config(function($routeProvider){
+  $routeProvider
+    .when('/',{
+      templateUrl: 'features/views/login.html',
+      controller: ''
+    })
+    .when('/question', {
+      templateUrl: 'features/views/question.html',
+      controller: ''
+    })
+    .otherwise({
+      redirectTo: "features/views/login.html" 
+    });
+})
