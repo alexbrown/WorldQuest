@@ -35,6 +35,17 @@ angular.module('starter', ['ionic', 'WorldQuest.question.controller', 'WorldQues
                 templateUrl: '/features/timer/timer.html',
                 controller: 'TimerCtrl'
             })
+                .state('submission', {
+                  url: '/submission',
+                  templateUrl: '/features/question/redirectSubmitted.html',
+                  controller: 'QuestionCtrl'
+              })
+
+                .state('noSubmission', {
+                  url: '/noSubmission',
+                  templateUrl: '/features/question/redirectTimeout.html',
+                  controller: 'QuestionCtrl'
+              })
             
         $urlRouterProvider.otherwise('/login');
       });
