@@ -1,5 +1,20 @@
 <ion-pane>
-<ion-content>
-<p>Test</p>
-</ion-content>
+	<ion-content>
+
+		<h1>
+	    	{{counter}}  
+		</h1>
+
+	<h2>Question</h2>
+	<div ng-bind="questions.problem"></div>
+
+	<form>
+		<div ng-repeat="answer in questions.possibleAns">
+			<input type = "button" value={{answer}} ng-click="selectedAnswer($index)">
+
+			</input></div>
+			
+	</form>
+
+	</ion-content>
 </ion-pane>

@@ -1,6 +1,6 @@
 angular.module('worldquest.controllers', [])
 
-.controller('logincontroller', function($scope, loginservice){
+.controller('logincontroller', function($scope, loginservice, $state){
 
 		var team= {};
 	 	$verifiedTeam={};
@@ -15,7 +15,11 @@ angular.module('worldquest.controllers', [])
 		 $scope.$watch(function(){return loginservice.getVerified();}, function(newVal, oldVal) {
 		     if (typeof newVal !== 'undefined') {
 		        $scope.verifiedTeam = newVal;
-		        console.log(newVal)	;
+		        if(newVal.teamId == 0){
+		        	$state.go('question');
+		        } else  {
+		        	$state.go('notfound');
+		        }
 		        }
       });
 })
