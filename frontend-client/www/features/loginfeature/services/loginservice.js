@@ -13,6 +13,7 @@ angular.module('worldquest.services', [])
 		}).then(function successCallback(output){
 			console.log(output);
 			verifiedTeam = output.data;
+			console.log(verifiedTeam);
 			return verifiedTeam;
 		})
 	}
