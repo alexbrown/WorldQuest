@@ -2,6 +2,7 @@ angular.module('WorldQuest.question.services', [])
 
 .factory('Questions', function($http){
 	var question = {}
+	var lastQuestion = {}
 
 	$http({
 		method: 'GET',
@@ -15,13 +16,16 @@ angular.module('WorldQuest.question.services', [])
 			method: 'GET',
 			url: 'http://localhost:8080/answer?questionID='+ answer.questionID + '&teamID='+12+'&answerIndex='+ answer.answerIndex 
 		}).then(function successCallback(output){
-			console.log(output)
+			lastQuestion = output
 		})
 	}
 
 	return{
 		all:function(){
 			return question;
+		},
+		getLastQuestion: function(){
+			return lastQuestion
 		},
 		sendAnswer: sendAnswer
 	}
