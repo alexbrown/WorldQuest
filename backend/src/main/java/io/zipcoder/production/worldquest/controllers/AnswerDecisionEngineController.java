@@ -3,13 +3,12 @@ package io.zipcoder.production.worldquest.controllers;
 import io.zipcoder.production.worldquest.models.Answer;
 import io.zipcoder.production.worldquest.models.Question;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
- * Created by abrown on 10/26/15.
+ * Created by rsparks on 10/26/15.
  */
 @Controller
 public class AnswerDecisionEngineController {
@@ -28,6 +27,4 @@ public class AnswerDecisionEngineController {
         Answer answer = new Answer(questionID, teamID, answerIndex);
         return answer;
     }
-
-
 }

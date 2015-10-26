@@ -1,24 +1,48 @@
 package io.zipcoder.production.worldquest.models;
 
+import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+
 /**
- * Created by abrown on 10/26/15.
+ * Created by rsparks on 10/26/15.
  */
+@Entity
+@Table(name = "answer")
 public class Answer {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private int answerID;
+
+    @NotNull
     private int questionID;
+
+    @NotNull
     private int teamID;
+
+    @NotNull
     private int answerIndex;
+
+    @NotNull
     private int timeAnswered;
+
+    public Answer(){};
 
     public Answer(int questionID, int teamID, int answerIndex){
         this.questionID = questionID;
         this.teamID = teamID;
         this.answerIndex = answerIndex;
     }
+
     public Answer(int questionID, int teamID,int answerIndex, int timeAnswered){
         this.questionID = questionID;
         this.teamID = teamID;
         this.answerIndex = answerIndex;
         this.timeAnswered = timeAnswered;
+    }
+
+    public int getAnswerID() {
+        return answerID;
     }
 
     public int getQuestionID() {
@@ -35,6 +59,10 @@ public class Answer {
 
     public int getTimeAnswered() {
         return timeAnswered;
+    }
+
+    public void setAnswerID(int answerID) {
+        this.answerID = answerID;
     }
 
     public void setQuestionID(int questionID) {
