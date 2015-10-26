@@ -23,8 +23,11 @@ angular.module('starter', ['ionic'])
   $stateProvider
             .state('login', {
                 url: '/login',
-                templateUrl: '/features/login/login.html',
-                controller: 'logincontroller'
+                templateUrl: '/features/loginfeature/login.html',
+            })
+            .state('question', {
+                url: '/question',
+                templateUrl: '/features/question/question.html'
             })
             
         $urlRouterProvider.otherwise('/');
