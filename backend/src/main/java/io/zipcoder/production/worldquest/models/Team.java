@@ -1,18 +1,25 @@
 package io.zipcoder.production.worldquest.models;
 
-import javax.persistence.Entity;
+import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 
 /**
  * Class Team
  */
 @Entity
-@Table
+@Table(name = "table")
 public class Team {
-
+    @NotNull
     private String name;
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int teamId;
+
+    @NotNull
     private int score;
+
+    @NotNull
     private String hash;
 
     /**
@@ -26,7 +33,6 @@ public class Team {
      * @param hash  Password hash
      */
     public Team(String name, String hash) {
-        this.teamId = 0;
         this.name = name;
         this.hash = hash;
         this.score = 0;

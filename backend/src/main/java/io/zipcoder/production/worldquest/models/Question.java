@@ -1,20 +1,34 @@
 package io.zipcoder.production.worldquest.models;
 
+import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+
 /**
  * Created by rsparks on 10/26/15.
  */
+@Entity
+@Table(name = "question")
 public class Question {
 
+    @NotNull
     private String problem;
+
+    @NotNull
     private String[] possibleAns;
+
+    @NotNull
     private int correctIndex;
-    private static int id = 1;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private int id;
+
+    public Question(){};
 
     public Question(String problem, String[] possibleAns, int correctIndex) {
         this.problem = problem;
         this.possibleAns = possibleAns;
         this.correctIndex = correctIndex;
-        this.id = id++;
     }
 
     public void setProblem(String problem) {
@@ -29,8 +43,8 @@ public class Question {
         this.correctIndex = correctIndex;
     }
 
-    public static void setId(int id) {
-        Question.id = id;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getProblem() {
@@ -46,7 +60,10 @@ public class Question {
         return correctIndex;
     }
 
-    public static int getId() {
+
+
+    public int getId() {
+
         return id;
     }
 }
