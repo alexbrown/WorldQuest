@@ -9,21 +9,25 @@ import javax.validation.constraints.NotNull;
 @Entity
 @Table(name = "answer")
 public class Answer {
-
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name="id")
     private int answerID;
 
     @NotNull
+    @Column(name="question")
     private int questionID;
 
     @NotNull
+    @Column(name="team")
     private int teamID;
 
     @NotNull
+    @Column(name="answer_index")
     private int answerIndex;
 
     @NotNull
+    @Column(name="time_answered")
     private int timeAnswered;
 
     public Answer(){};

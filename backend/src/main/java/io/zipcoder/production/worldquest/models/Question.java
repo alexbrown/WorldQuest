@@ -13,6 +13,7 @@ public class Question {
     @NotNull
     private String problem;
 
+    @Transient
     private String[] possibleAns;
 
     @NotNull

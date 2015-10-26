@@ -7,13 +7,14 @@ import javax.validation.constraints.NotNull;
  * Class Team
  */
 @Entity
-@Table(name = "table")
+@Table(name = "team")
 public class Team {
     @NotNull
     private String name;
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name="teamId")
     private int teamId;
 
     @NotNull
