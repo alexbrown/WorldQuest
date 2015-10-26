@@ -9,10 +9,11 @@ public class Answer {
     private int answerIndex;
     private int timeAnswered;
 
-    public Answer(){
-        
+    public Answer(int questionID, int teamID, int answerIndex){
+        this.questionID = questionID;
+        this.teamID = teamID;
+        this.answerIndex = answerIndex;
     }
-
     public Answer(int questionID, int teamID,int answerIndex, int timeAnswered){
         this.questionID = questionID;
         this.teamID = teamID;

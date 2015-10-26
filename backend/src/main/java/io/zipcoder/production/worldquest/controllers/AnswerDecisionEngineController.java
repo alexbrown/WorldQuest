@@ -24,8 +24,9 @@ public class AnswerDecisionEngineController {
 
     @RequestMapping(value="/answer", method = RequestMethod.GET)
     @ResponseBody
-    public boolean sendAnswer(Answer answer){
-        return true;
+    public Answer sendAnswer(Integer questionID, Integer teamID, Integer answerIndex){
+        Answer answer = new Answer(questionID, teamID, answerIndex);
+        return answer;
     }
 
 
