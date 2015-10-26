@@ -18,17 +18,20 @@ angular.module('worldquest', ['ionic', 'worldquest.controllers', 'worldquest.ser
   });
 })
 
-.config(function($routeProvider){
-  $routeProvider
-    .when('/',{
-      templateUrl: 'features/views/login.html',
-      controller: 'logincontroller'
-    })
-    .when('/question', {
-      templateUrl: 'features/views/question.html',
-      controller: ''
-    })
-    .otherwise({
-      redirectTo: "features/views/login.html" 
-    });
-})
+
+.config(function($stateProvider, $urlRouterProvider) {
+
+  $stateProvider
+            .state('login', {
+                url: '/login',
+                templateUrl: '/features/loginfeature/views/login.html',
+                controller: "logincontroller"
+            })
+            /*.state('question', {
+                url: '/question',
+                templateUrl: '/features/question/question.html',
+                controller: 'QuestionCtrl'
+            })*/
+            
+        $urlRouterProvider.otherwise('/login');
+      });
