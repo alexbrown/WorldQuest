@@ -36,5 +36,5 @@ angular.module('starter', ['ionic', 'WorldQuest.question.controller', 'WorldQues
                 controller: 'TimerCtrl'
             })
             
-        $urlRouterProvider.otherwise('/');
+        $urlRouterProvider.otherwise('/login');
       });
