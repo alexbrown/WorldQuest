@@ -1,0 +1,4 @@
+backend/*.iml
+backend/.idea
+backend/.mvn
+*.DS_Store
