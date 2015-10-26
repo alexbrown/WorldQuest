@@ -1,21 +1,24 @@
+
 <ion-pane>
 	<ion-content>
- HEAD
-	<p onload= 'startTimer()'>
-    {{counter}}
-    
-    
- </p>
+	
 
-	<h1>Question</h1>
-	<div ng-bind="questions.problem"></div>
+	
+	<div class="col-md-6">
+	<div ng-bind="questions.problem" style="text-align:center; color:white; font-size:18px; text-transform:uppercase; margin-top:20px;"></div>
+
+	<div onload= 'startTimer()' style="text-align:right; margin-right:20px; font-size:30px; color:white;">
+    {{counter}}
+   	</div>
+   	</div>
 
 	<form>
 		<div ng-repeat="answer in questions.possibleAns">
-			<input type = "button" value={{answer}} ng-click="selectedAnswer($index)">
+			<div class="card" style="padding:15px">
+			<input type = "button" value={{answer}} ng-click="selectedAnswer($index)" style="background:none; border:none; text-align:center;">
 
 			</input></div>
-			
+			</div>
 	</form>
 
 	</ion-content>
