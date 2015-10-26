@@ -1,10 +1,16 @@
 package io.zipcoder.production.worldquest.models;
 
+import javax.persistence.Entity;
+
 /**
  * Class Team
  */
+@Entity
+@Table
 public class Team {
+
     private String name;
+
     private int teamId;
     private int score;
     private String hash;

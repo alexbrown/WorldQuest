@@ -11,14 +11,14 @@ import org.springframework.web.bind.annotation.RequestMethod;
  */
 @Controller
 public class AnswerDecisionEngineController {
-    String[] answers = new String[]{"Tokyo","Beijing","Pyeongchang","Almaty"};
-    Question question = new Question("Which city is the host of 2022 Winter Olympic Games?", answers, 1);
 
-    String[] answers0 = new String[]{};
-    Question question0 = new Question
+
+
 
     @RequestMapping(value = "/question", method = RequestMethod.GET)
     public Question getQuestion(){
+        String[] answers = new String[]{"Tokyo","Beijing","Pyeongchang","Almaty"};
+        Question question = new Question("Which city is the host of 2022 Winter Olympic Games?", answers, 1);
         return question;
     }
 
