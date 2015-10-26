@@ -7,7 +7,8 @@ angular.module('worldquest.controllers', [])
 	 	$scope.sendForVerification= function(){
 			team.name=$scope.name;
 			team.password= $scope.password;
-			console.log(team);
+			team.url = "?name=" + $scope.name + "&password=" + $scope.password;
+			console.log(team.url);
 			loginservice.sendForVerification(team);
 	}
 
