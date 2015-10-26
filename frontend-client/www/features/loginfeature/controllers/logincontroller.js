@@ -17,9 +17,7 @@ angular.module('worldquest.controllers', [])
 		        $scope.verifiedTeam = newVal;
 		        if(newVal.teamId == 0){
 		        	$state.go('question');
-		        } else  {
-		        	$state.go('notfound');
 		        }
-		        }
+		    }
       });
 })
