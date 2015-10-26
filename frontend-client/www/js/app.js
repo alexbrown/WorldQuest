@@ -6,6 +6,9 @@
 
 angular.module('worldquest', ['ionic','worldquest.controllers', 'worldquest.services', 'WorldQuest.question.controller', 'WorldQuest.question.services', 'timer.controllers'])
 
+angular.module('starter', ['ionic','worldquest.controllers', 'worldquest.services', 'WorldQuest.question.controller', 'WorldQuest.question.services', 'timer.controllers'])
+
+
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
