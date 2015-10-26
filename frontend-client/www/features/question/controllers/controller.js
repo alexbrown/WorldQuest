@@ -36,7 +36,7 @@ app.controller('QuestionCtrl', function($scope, $timeout, Questions){
 		Questions.sendAnswer(answer);
 		console.log(answer);
 	}
-<<<<<<< HEAD
+
  // the current timeoutID
     // actual timer method, counts down every second, stops on zero
     $scope.onTimeout = function() {
@@ -66,7 +66,6 @@ app.controller('QuestionCtrl', function($scope, $timeout, Questions){
 	$scope.$on('$ionicView.enter', $scope.startTimer())
 })
 
-=======
 
-})
->>>>>>> 67436ff25ab4b191963278e67a5cc664de890189
+
+
