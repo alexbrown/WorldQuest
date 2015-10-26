@@ -22,7 +22,7 @@ angular.module('worldquest', ['ionic', 'worldquest.controllers', 'worldquest.ser
   $routeProvider
     .when('/',{
       templateUrl: 'features/views/login.html',
-      controller: ''
+      controller: 'logincontroller'
     })
     .when('/question', {
       templateUrl: 'features/views/question.html',
