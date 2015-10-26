@@ -5,18 +5,17 @@ angular.module('WorldQuest.question.services', [])
 
 	$http({
 		method: 'GET',
-		url:'/features/question/service/dummydata.json'
+		url:'http://localhost:8080/question'
 	}).then(function successCallback(response){
 		question = response.data;
 	});
 
-	function sendAnswer(awnser){
+	function sendAnswer(answer){
 		$http({
-			method: 'POST',
-			url: 'http://localhost:8080/answer',
-			data: awnser
+			method: 'GET',
+			url: 'http://localhost:8080/answer?questionID='+ answer.questionID + '&teamID='+12+'&answerIndex='+ answer.answerIndex 
 		}).then(function successCallback(output){
-			return output
+			console.log(output)
 		})
 	}
 
