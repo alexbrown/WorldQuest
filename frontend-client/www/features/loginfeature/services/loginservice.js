@@ -6,11 +6,14 @@ angular.module('worldquest.services', [])
 
 
 	function sendForVerification(loginInfo){
+		console.log(loginInfo);
+		
 		$http({
-			method: 'POST',
+			method: 'GET',
 			url: url,
 			data: loginInfo
 		}).then(function successCallback(output){
+			console.log(output);
 			verifiedTeam = output.data;
 			return verifiedTeam;
 		})
@@ -24,10 +27,4 @@ angular.module('worldquest.services', [])
 		sendForVerification: sendForVerification,
 		getResponse: getResponse
 	};
-	
-
-
-	return {
-		verify : verify
-	}
 });
