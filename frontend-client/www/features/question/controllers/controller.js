@@ -21,6 +21,7 @@ app.controller('QuestionCtrl', function($scope, $timeout, Questions){
 		if (typeof newVal !== 'undefined') {
         $scope.questions = newVal;
         $scope.questionID = newVal.id;
+        
         console.log(newVal);
     }});
 
@@ -31,7 +32,8 @@ app.controller('QuestionCtrl', function($scope, $timeout, Questions){
 		var answer = {
 			questionID: 1,
 			teamID: $scope.teamID,
-			answerIndex: index
+			answerIndex: index,
+			timeAnswered: $scope.counter
 		}
 		Questions.sendAnswer(answer);
 		console.log(answer);
