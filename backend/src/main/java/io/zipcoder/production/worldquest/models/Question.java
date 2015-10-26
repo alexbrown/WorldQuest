@@ -48,6 +48,12 @@ public class Question {
         possibleAns = new String[]{answer_a, answer_b, answer_c, answer_d};
     }
 
+    public Question(String problem, String[] possibleAns, int correctIndex) {
+        this.problem = problem;
+        this.correctIndex = correctIndex;
+        possibleAns = possibleAns;
+    }
+
     public void buildAnswerArray(){
         possibleAns = new String[]{answer_a, answer_b, answer_c, answer_d};
 

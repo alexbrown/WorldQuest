@@ -28,6 +28,12 @@ public class Answer {
 
     public Answer(){};
 
+    public Answer(int questionID, int teamID, int answerIndex){
+        this.questionID = questionID;
+        this.teamID = teamID;
+        this.answerIndex = answerIndex;
+    }
+
     public Answer(int questionID, int teamID,int answerIndex, int timeAnswered){
         this.questionID = questionID;
         this.teamID = teamID;

@@ -9,15 +9,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
  * Created by rsparks on 10/26/15.
-=======
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
-
-/**
- * Created by abrown on 10/26/15.
->>>>>>> origin
  */
 @Controller
 public class AnswerDecisionEngineController {
@@ -32,7 +23,8 @@ public class AnswerDecisionEngineController {
 
     @RequestMapping(value="/answer", method = RequestMethod.GET)
     @ResponseBody
-    public boolean sendAnswer(Answer answer){
-        return true;
+    public Answer sendAnswer(Integer questionID, Integer teamID, Integer answerIndex){
+        Answer answer = new Answer(questionID, teamID, answerIndex);
+        return answer;
     }
 }
