@@ -4,11 +4,7 @@
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
 
-<<<<<<< HEAD
-angular.module('worldquest', ['ionic','worldquest.controllers', 'worldquest.services', 'WorldQuest.question.controller', 'WorldQuest.question.services', 'timer.controllers'])
-=======
 angular.module('starter', ['ionic','worldquest.controllers', 'worldquest.services', 'WorldQuest.question.controller', 'WorldQuest.question.services', 'timer.controllers'])
->>>>>>> 0a298a15688189334b6c2741f9d8f234792a08d8
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -52,10 +48,6 @@ angular.module('starter', ['ionic','worldquest.controllers', 'worldquest.service
                   templateUrl: '/features/question/redirectTimeout.html',
                   controller: 'QuestionCtrl'
               })
-<<<<<<< HEAD
-
-=======
->>>>>>> 0a298a15688189334b6c2741f9d8f234792a08d8
             
         $urlRouterProvider.otherwise('/login');
       });
