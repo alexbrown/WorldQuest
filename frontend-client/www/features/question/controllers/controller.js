@@ -14,7 +14,7 @@ app.controller('QuestionCtrl', function($scope, $timeout, $state, $window, Quest
     /*
     Timer functionality variables
     */
-    $scope.counter = 5;
+    $scope.counter = 45;
     var mytimeout = null;
 
     /*
