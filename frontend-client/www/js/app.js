@@ -51,6 +51,11 @@ angular.module('starter', ['ionic','worldquest.controllers', 'worldquest.service
                   templateUrl: '/features/question/redirectTimeout.html',
                   controller: 'QuestionCtrl'
               })
+              .state('create', {
+                url:'/create',
+                templateUrl: '/features/loginfeature/views/create.html',
+                controller: 'logincontroller'
+              })
 
             
         $urlRouterProvider.otherwise('/login');

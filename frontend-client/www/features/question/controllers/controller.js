@@ -1,10 +1,10 @@
     var app = angular.module('WorldQuest.question.controller', []);
 
-app.controller('QuestionCtrl', function($scope, $timeout, $state, $window, Questions){
-    /*
-    Required references to the Question object
-    */
-    $scope.questions = Questions.all();
+app.controller('QuestionCtrl', function($scope, $timeout, $state,$window, Questions){
+	/*
+	Required references to the Question object
+	*/
+	$scope.questions = Questions.all();
     $scope.questionID= Questions.all().id;
     $scope.teamID = 12;
     $scope.response = {};
@@ -15,6 +15,7 @@ app.controller('QuestionCtrl', function($scope, $timeout, $state, $window, Quest
     Timer functionality variables
     */
     $scope.counter = 45;
+    $scope.counter = 5;
     var mytimeout = null;
 
     /*
@@ -105,10 +106,11 @@ app.controller('QuestionCtrl', function($scope, $timeout, $state, $window, Quest
            }
               }
     });
+   
     $scope.$on('$ionicView.beforeEnter', $scope.startTimer())
 
     $scope.nextQuestion= function(){
         console.log("Called");
         $window.location.reload(true);
     }
-})
+});
