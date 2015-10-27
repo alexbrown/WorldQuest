@@ -2,9 +2,6 @@
 <ion-pane>
 	<ion-content>
 
-	
-
-	
 	<div class="col-md-6">
 	<div ng-bind="questions.problem" style="text-align:center; color:white; font-size:18px; text-transform:uppercase; margin-top:20px;"></div>
 
@@ -17,10 +14,10 @@
 	<form>
 		<div ng-repeat="answer in questions.possibleAns">
 			<div class="card" style="padding:15px">
-			<input type = "button" value={{answer}} ng-click="selectedAnswer($index)" style="background:none; border:none; text-align:center;">
-
-			</input></div>
+			<input  type = "button" value={{answer}} ng-disabled='counter==0'ng-click="selectedAnswer($index)" style="background:none; border:none; text-align:center;" ng-attr-id={{$index}}>
+			</input>
 			</div>
+		</div>
 	</form>
 
 	</ion-content>

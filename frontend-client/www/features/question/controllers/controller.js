@@ -1,4 +1,4 @@
-var app = angular.module('WorldQuest.question.controller', []);
+    var app = angular.module('WorldQuest.question.controller', []);
 
 app.controller('QuestionCtrl', function($scope, $timeout, $state, Questions){
 	/*
@@ -77,6 +77,7 @@ app.controller('QuestionCtrl', function($scope, $timeout, $state, Questions){
             timeAnswered: $scope.counter
         };
         if(remaining === 0) {
+
             Questions.sendAnswer(answer);
             console.log(answer);
 
