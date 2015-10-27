@@ -30,21 +30,26 @@ public class Answer {
     @Column(name="time_answered")
     private int timeAnswered;
 
+    /**
+     * Default constructor
+     */
     public Answer(){};
 
+    /**
+     * Custom Constructor
+     * @param questionID -- id in the database of questions
+     * @param teamID -- id of the Team that responded
+     * @param answerIndex -- what the team answered
+     */
     public Answer(int questionID, int teamID, int answerIndex){
         this.questionID = questionID;
         this.teamID = teamID;
         this.answerIndex = answerIndex;
     }
 
-    public Answer(int questionID, int teamID,int answerIndex, int timeAnswered){
-        this.questionID = questionID;
-        this.teamID = teamID;
-        this.answerIndex = answerIndex;
-        this.timeAnswered = timeAnswered;
-    }
-
+    /**
+     * Getters and Setters
+     */
     public int getAnswerID() {
         return answerID;
     }
@@ -69,10 +74,7 @@ public class Answer {
         this.answerID = answerID;
     }
 
-    public void setQuestionID(int questionID) {
-
-        this.questionID = questionID;
-    }
+    public void setQuestionID(int questionID) { this.questionID = questionID;}
 
     public void setTeamID(int teamID) {
         this.teamID = teamID;

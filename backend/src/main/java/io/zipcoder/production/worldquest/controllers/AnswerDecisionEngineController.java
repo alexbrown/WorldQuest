@@ -18,9 +18,12 @@ public class AnswerDecisionEngineController {
 
     @Autowired
     private QuestionDAO questionDAO;
-    String[] answers = new String[]{"Tokyo","Beijing","Pyeongchang","Almaty"};
-    Question question = new Question("Which city is the host of 2022 Winter Olympic Games?", answers, 1);
 
+
+    /**
+     * Gets the next question in the database (by incrementing, this needs to change)
+     * @return question object
+     */
     @RequestMapping(value = "/question", method = RequestMethod.GET)
     @ResponseBody
     public Question getQuestion(){
@@ -33,6 +36,13 @@ public class AnswerDecisionEngineController {
         return question;
     }
 
+    /**
+     * Takes in the id of the question and team, their answer and evaluates if it's correct
+     * @param questionID -- id of question in database
+     * @param teamID --  id of team in database
+     * @param answerIndex -- what that team selected for answer
+     * @return true if they were right, false if they weren't
+     */
     @RequestMapping(value="/answer", method = RequestMethod.GET)
     @ResponseBody
     public boolean sendAnswer(Integer questionID, Integer teamID, Integer answerIndex){
