@@ -1,27 +1,27 @@
     var app = angular.module('WorldQuest.question.controller', []);
 
 app.controller('QuestionCtrl', function($scope, $timeout, $state, Questions){
-	/*
-	Required references to the Question object
-	*/
-	$scope.questions = Questions.all();
-	$scope.questionID= Questions.all().id;
-	$scope.teamID = 12;
-	$scope.response = {};
+    /*
+    Required references to the Question object
+    */
+    $scope.questions = Questions.all();
+    $scope.questionID= Questions.all().id;
+    $scope.teamID = 12;
+    $scope.response = {};
     $scope.selectedIndex;
     var answer = {};
 
-	/*
-	Timer functionality variables
-	*/
-	$scope.counter = 5;
+    /*
+    Timer functionality variables
+    */
+    $scope.counter = 5;
     var mytimeout = null;
 
     /*
     Checks for new entries from user
     */
-	$scope.$watch(function(){return Questions.all();}, function(newVal, oldVal) {
-		if (typeof newVal !== 'undefined') {
+    $scope.$watch(function(){return Questions.all();}, function(newVal, oldVal) {
+        if (typeof newVal !== 'undefined') {
         $scope.questions = newVal;
         $scope.questionID = newVal.id;
         $scope.response = {};
@@ -30,7 +30,7 @@ app.controller('QuestionCtrl', function($scope, $timeout, $state, Questions){
     }});
 
     $scope.$watch(function(){return Questions.getLastQuestion();}, function(newVal, oldVal) {
-		if (typeof newVal !== 'undefined') {
+        if (typeof newVal !== 'undefined') {
         $scope.response = newVal;
         
     }});
@@ -38,16 +38,16 @@ app.controller('QuestionCtrl', function($scope, $timeout, $state, Questions){
     /*
     Sends selected answer to backend
     */
-	$scope.selectedAnswer = function(index){
-		answer = {
-			questionID: 1,
-			teamID: $scope.teamID,
-			answerIndex: index,
-			timeAnswered: $scope.counter
-		}
+    $scope.selectedAnswer = function(index){
+        answer = {
+            questionID: 1,
+            teamID: $scope.teamID,
+            answerIndex: index,
+            timeAnswered: $scope.counter
+        }
         $scope.selectedIndex = index;
 
-	}
+    }
 
     $scope.changeColor = function(index){
         if(index == $scope.selectedIndex){
@@ -56,6 +56,14 @@ app.controller('QuestionCtrl', function($scope, $timeout, $state, Questions){
             return "background-color:white"
         }
         
+    }
+
+    $scope.answerColor = function(index){
+        if($scope.counter==0){
+        if(index == $scope.questions.correctIndex){
+            return  "background-color:#76EE00 !important"
+        }
+    }
     }
 
  // the current timeoutID
@@ -94,9 +102,5 @@ app.controller('QuestionCtrl', function($scope, $timeout, $state, Questions){
             Questions.sendAnswer(noAnswer);
               }
     });
-	$scope.$on('$ionicView.beforeEnter', $scope.startTimer())
+    $scope.$on('$ionicView.beforeEnter', $scope.startTimer())
 })
-
-
-
-
