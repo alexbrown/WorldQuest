@@ -24,9 +24,9 @@ public class TeamController {
     @ResponseBody
     @RequestMapping(value="/team/auth",method = RequestMethod.GET)
     public Team authenticate(String name, String password) {
-        Team authorizedTeam = null;
         System.out.println(name + " " + password);
 
+        Team authorizedTeam = null;
         if(teams.containsKey(name) && teams.get(name).getHash().equals(password)) {
             authorizedTeam = teams.get(name);
         }

@@ -2,29 +2,24 @@ angular.module('worldquest.services', [])
 
 .factory('loginservice', function($http){
 	verifiedTeam= {};
-	url = 'http://127.0.0.1:8080/team/auth';
 
-
-	function sendForVerification(loginInfo){
+	function sendForVerification(loginInfo){	
 		console.log(loginInfo);
-		
 		$http({
 			method: 'GET',
-			url: url,
-			data: loginInfo
+			url: 'http://127.0.0.1:8080/team/auth' + loginInfo,
 		}).then(function successCallback(output){
-			console.log(output);
 			verifiedTeam = output.data;
 			return verifiedTeam;
 		})
 	}
 
-	function getResponse(){
-		return response;
+	function getVerified(){
+		return verifiedTeam;
 	}
 		
 	return {
 		sendForVerification: sendForVerification,
-		getResponse: getResponse
+		getVerified : getVerified
 	};
 });

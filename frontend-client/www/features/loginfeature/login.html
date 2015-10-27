@@ -1,10 +1,12 @@
 <ion-pane>
+<ion-content>
 <h1>User Login</h1>
-	<form onSubmit= "">
-		
-			<input type="text" placeholder="User Name" class="loginInput"></input>
-		
-			<input type="password" placeholder="Password" class="loginInput"></input>
-		
+
+	<form ng-submit= "sendForVerification()">
+		<input type="text" placeholder="User Name" ng-model="name"></input>
+		<input type="password" placeholder="Password" ng-model="password"></input>
+		<button type='submit'></button>
+
 	</form>
-	</ion-pane>
+</ion-content>	
+</ion-pane>
