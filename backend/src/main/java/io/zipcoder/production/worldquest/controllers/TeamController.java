@@ -31,7 +31,10 @@ public class TeamController {
             authorizedTeam = teams.get(name);
         }
 
-        //String response = team != null && team.getHash().equals(password) ? "true" : "false";
+        if(authorizedTeam == null) {
+            authorizedTeam = new Team("Unauthorized", "");
+        }
+
         return authorizedTeam;
     }
 }
