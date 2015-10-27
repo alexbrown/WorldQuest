@@ -1,6 +1,6 @@
     var app = angular.module('WorldQuest.question.controller', []);
 
-app.controller('QuestionCtrl', function($scope, $timeout, $state, Questions){
+app.controller('QuestionCtrl', function($scope, $timeout, $state, $window, Questions){
     /*
     Required references to the Question object
     */
@@ -9,7 +9,7 @@ app.controller('QuestionCtrl', function($scope, $timeout, $state, Questions){
     $scope.teamID = 12;
     $scope.response = {};
     $scope.selectedIndex;
-    var answer = {};
+    var answer;
 
     /*
     Timer functionality variables
@@ -88,19 +88,27 @@ app.controller('QuestionCtrl', function($scope, $timeout, $state, Questions){
     };
     // triggered, when the timer stops, you can do something here, maybe show a visual indicator or vibrate the device
     $scope.$on('timer-stopped', function(event, remaining) {
-        var noAnswer = {
-            questionID: 1,
-            teamID: $scope.teamID,
-            answerIndex: -9001,
-            timeAnswered: $scope.counter
-        };
+        
         if(remaining === 0) {
-
-            Questions.sendAnswer(answer);
-            console.log(answer);
-
-            Questions.sendAnswer(noAnswer);
+            console.log(answer == undefined);
+            if(answer == undefined){
+                var noAnswer = {
+                    questionID: 1,
+                    teamID: $scope.teamID,
+                    answerIndex: -9001,
+                    timeAnswered: $scope.counter
+                };
+                 Questions.sendAnswer(noAnswer);
+            }
+           else{
+                Questions.sendAnswer(answer);
+           }
               }
     });
     $scope.$on('$ionicView.beforeEnter', $scope.startTimer())
+
+    $scope.nextQuestion= function(){
+        console.log("Called");
+        $window.location.reload(true);
+    }
 })
