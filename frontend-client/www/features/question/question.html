@@ -17,7 +17,7 @@
 	<form>
 		<div ng-repeat="answer in questions.possibleAns" style="width:100%;">
 			
-			<input type = "button" style="{{changeColor($index)}}" value={{answer}} ng-click="selectedAnswer($index)" class="trivia-btn" ng-attr-id={{$index}}>
+			<input type = "button" style="{{changeColor($index)}}; {{answerColor($index)}}" value={{answer}} ng-click="selectedAnswer($index)" class="trivia-btn" ng-attr-id={{$index}}>
 
 			</input>
 			</div>

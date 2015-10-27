@@ -51,11 +51,17 @@ app.controller('QuestionCtrl', function($scope, $timeout, $state, Questions){
 
     $scope.changeColor = function(index){
         if(index == $scope.selectedIndex){
-            return "background-color:yellow"
+            return "background-color:yellow;"
         } else{
-            return "background-color:white"
+            return "background-color:white;"
         }
         
+    }
+
+    $scope.answerColor = function(index){
+        if(index == $scope.questions.correctIndex){
+            return "background-color:#76EE00 !important"
+        }
     }
 
  // the current timeoutID
