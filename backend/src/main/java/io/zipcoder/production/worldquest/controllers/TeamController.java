@@ -1,6 +1,8 @@
 package io.zipcoder.production.worldquest.controllers;
 
 import io.zipcoder.production.worldquest.models.Team;
+import io.zipcoder.production.worldquest.models.TeamDAO;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -14,24 +16,51 @@ import java.util.HashMap;
  */
 @Controller
 public class TeamController {
-    private static HashMap<String, Team> teams = new HashMap<>();
-
-    static{
-        String username = "user";
-        teams.put(username, new Team(username, "password"));
-    }
+    @Autowired
+    private TeamDAO teamDAO;
+    private static Team unauthorizedTeam = new Team("Unauthorized", "");
 
     @ResponseBody
     @RequestMapping(value="/team/auth",method = RequestMethod.GET)
     public Team authenticate(String name, String password) {
-        System.out.println(name + " " + password);
+        Team authorizedTeam = teamDAO.findOneByName(name);
 
-        Team authorizedTeam = null;
-        if(teams.containsKey(name) && teams.get(name).getHash().equals(password)) {
-            authorizedTeam = teams.get(name);
+        if(authorizedTeam == null || authorizedTeam.getHash().equals(password)) {
+            return authorizedTeam;
+        }
+        else {
+            return unauthorizedTeam;
+        }
+    }
+
+    @ResponseBody
+    @RequestMapping(value="/team",method = RequestMethod.PUT)
+    public Object putTeam(@RequestParam(value="name") String name, @RequestParam(value="password") String password) {
+        Team matchingTeam = teamDAO.findOneByName(name);
+        String status = "success";
+        if(matchingTeam == null) {
+            matchingTeam = new Team(name, password);
+            teamDAO.save(matchingTeam);
+        }
+        else {
+            matchingTeam = null;
+            status = "failed";
         }
 
-        //String response = team != null && team.getHash().equals(password) ? "true" : "false";
-        return authorizedTeam;
+        final Team returnTeam = matchingTeam;
+        final String returnStatus = status;
+
+        return new Object() {
+            Team team = returnTeam;
+            String status = returnStatus;
+
+            public String getStatus() {
+                return this.status;
+            }
+
+            public Team getTeam() {
+                return this.team;
+            }
+        };
     }
 }
