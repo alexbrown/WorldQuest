@@ -12,9 +12,10 @@
 
 
 	<form>
-		<div ng-repeat="answer in questions.possibleAns">
-			<div class="card" style="padding:15px">
-			<input  type = "button" value={{answer}} ng-disabled='counter==0'ng-click="selectedAnswer($index)" style="background:none; border:none; text-align:center;" ng-attr-id={{$index}}>
+
+		<div ng-repeat="answer in questions.possibleAns" style="width:100%;">
+		
+			<input type = "button" style="{{changeColor($index)}}" value={{answer}} ng-click="selectedAnswer($index)" class="trivia-btn" style="background:none; border:none; text-align:center;" ng-disabled='counter==0' ng-attr-id={{$index}}>
 			</input>
 			</div>
 		</div>

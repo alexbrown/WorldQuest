@@ -8,6 +8,7 @@ app.controller('QuestionCtrl', function($scope, $timeout, $state, Questions){
 	$scope.questionID= Questions.all().id;
 	$scope.teamID = 12;
 	$scope.response = {};
+    $scope.selectedIndex;
     var answer = {};
 
 	/*
@@ -44,9 +45,18 @@ app.controller('QuestionCtrl', function($scope, $timeout, $state, Questions){
 			answerIndex: index,
 			timeAnswered: $scope.counter
 		}
+        $scope.selectedIndex = index;
 
-        console.log(answer);
 	}
+
+    $scope.changeColor = function(index){
+        if(index == $scope.selectedIndex){
+            return "background-color:yellow"
+        } else{
+            return "background-color:white"
+        }
+        
+    }
 
  // the current timeoutID
     // actual timer method, counts down every second, stops on zero
