@@ -6,6 +6,7 @@ angular.module('worldquest.controllers', [])
 	 	$verifiedTeam={};
 	 	$scope.alertMessage;
 
+
 	 	$scope.sendForVerification= function(){
 			team.name=$scope.name;
 			team.password= $scope.password;
@@ -23,6 +24,14 @@ angular.module('worldquest.controllers', [])
 		     }
 		     console.log($scope.alertMessage)
       });
+
+		 $scope.createTeam = function(){
+		 	var team = {
+		 		name: $scope.newName,
+		 		password: $scope.newPassword
+		 	}
+		 	console.log($scope.newName);
+		 }
 		     
 
 		
