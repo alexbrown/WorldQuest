@@ -8,7 +8,7 @@ app.controller('QuestionCtrl', function($scope, $timeout, $state, Questions){
 	$scope.questionID= Questions.all().id;
 	$scope.teamID = 12;
 	$scope.response = {};
-
+    var answer = {};
 
 	/*
 	Timer functionality variables
@@ -38,16 +38,14 @@ app.controller('QuestionCtrl', function($scope, $timeout, $state, Questions){
     Sends selected answer to backend
     */
 	$scope.selectedAnswer = function(index){
-		var answer = {
+		answer = {
 			questionID: 1,
 			teamID: $scope.teamID,
 			answerIndex: index,
 			timeAnswered: $scope.counter
 		}
-		Questions.sendAnswer(answer);
-		this.stopTimer();
-        console.log($scope.response);
-        $state.go('submission');
+
+        console.log(answer);
 	}
 
  // the current timeoutID
@@ -79,7 +77,8 @@ app.controller('QuestionCtrl', function($scope, $timeout, $state, Questions){
             timeAnswered: $scope.counter
         };
         if(remaining === 0) {
-            $state.go('noSubmission');
+            Questions.sendAnswer(answer);
+            console.log(answer);
 
             Questions.sendAnswer(noAnswer);
               }
