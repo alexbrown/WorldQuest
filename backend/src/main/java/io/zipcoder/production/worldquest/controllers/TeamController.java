@@ -25,7 +25,7 @@ public class TeamController {
     public Team authenticate(String name, String password) {
         Team authorizedTeam = teamDAO.findOneByName(name);
 
-        if(authorizedTeam == null || authorizedTeam.getHash().equals(password)) {
+        if(authorizedTeam != null && authorizedTeam.getHash().equals(password)) {
             return authorizedTeam;
         }
         else {

@@ -1,3 +1,12 @@
 INSERT INTO team(name, hash) VALUES("user", "password");
 INSERT INTO question(problem, answer_a, answer_b, answer_c, answer_d, correct_index) VALUES("What city is the host of the 2022 Winter Olympics?", "Tokyo", "Beijing", "Pyeongyang", "Almaty", 1);
-INSERT INTO question(problem, answer_a, answer_b, answer_c, answer_d, correct_index) VALUES("What city are we in?", "Wilmington", "DC", "Baltimore", "Annapolis", 0);
+INSERT INTO question(problem, answer_a, answer_b, answer_c, answer_d, correct_index) VALUES("Who emerged as the winner of the 11th Hero MTB Himalaya?", "Luis Leao Pinto", "Andi Seewald","Pau Zamora","Peter Butt",0);
+INSERT INTO question(problem, answer_a, answer_b, answer_c, answer_d, correct_index) VALUES("Which amoung the following has been ranked top in terms of brand value, globally?","Google","Coca Cola","Apple","Samsung",2);
+INSERT INTO question(problem, answer_a, answer_b, answer_c, answer_d, correct_index) VALUES("Which type of cloud most often produces severe thunderstorm and hail storms","Cumulus","Cirrus","Cumulonimbus","Stratus",2);
+INSERT INTO question(problem, answer_a, answer_b, answer_c, answer_d, correct_index) VALUES("According to WHO standards, the level of Particulate Matter 2.5 should not exceed _____ per cubic meter. Fill the blank with correct option:","10 micrograms","15 micrograms","25 micrograms","50 micrograms",0);
+INSERT INTO question(problem, answer_a, answer_b, answer_c, answer_d, correct_index) VALUES("The Change La seed bank, world's highest research and development facility is located in which place?","Leh","Masoorie","Tibet","Shimla",0);
+INSERT INTO question(problem, answer_a, answer_b, answer_c, answer_d, correct_index) VALUES("Who had been elected as President of Board of Control for Cricket in India (BCCI)", "Anurag Takur","Shashank Manohar","Rajiv Shukla","R Srinivasan",1);
+INSERT INTO question(problem, answer_a, answer_b, answer_c, answer_d, correct_index) VALUES("Who won the 2015 Wuhan Open Women's Single title?","Garbine Muguruza","Venus Williams","Martina Hingis","Camelia Begu", 1);
+INSERT INTO question(problem, answer_a, answer_b, answer_c, answer_d, correct_index) VALUES("Sheila Watt-Cloutier of Canada won the 2015 Right Livelihood Awards for her work in which field?","Gay Rights","Climate Change","Press Freedom","Child Right",1);
+INSERT INTO question(problem, answer_a, answer_b, answer_c, answer_d, correct_index) VALUES("At which place DRDO has set up the world's highest Terrestrial Research Centre?","Leh","Srinagar","Ladakh","Anantnag",2);
+INSERT INTO question(problem, answer_a, answer_b, answer_c, answer_d, correct_index) VALUES("Which bank has launched MVisa mobile payment solution recently?","SBI","ICICI","HDFC","Axis",1);

@@ -37,8 +37,17 @@ public class Question {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
+    /**
+     * Default constructor
+     */
     public Question(){};
 
+    /**
+     * Custom Constructor
+     * @param problem -- question as a String
+     * @param answer_a, answer_b, answer_c, answer_d -- four possible answers as Strings
+     * @param correctIndex -- index of the correct answer from 0 to 3
+     */
     public Question(String problem, String answer_a, String answer_b, String answer_c, String answer_d, int correctIndex) {
         this.problem = problem;
         this.answer_a = answer_a;
@@ -46,19 +55,20 @@ public class Question {
         this.answer_c = answer_c;
         this.answer_d = answer_d;
         this.correctIndex = correctIndex;
-        possibleAns = new String[]{answer_a, answer_b, answer_c, answer_d};
+        this.possibleAns = new String[]{answer_a, answer_b, answer_c, answer_d};
     }
 
-    public Question(String problem, String[] possibleAns, int correctIndex) {
-        this.problem = problem;
-        this.correctIndex = correctIndex;
-        possibleAns = possibleAns;
-    }
-
+    /**
+     * Takes 4 answers and builds an array out of them
+     */
     public void buildAnswerArray(){
         possibleAns = new String[]{answer_a, answer_b, answer_c, answer_d};
 
     }
+
+    /**
+     * Getters and Setters
+     */
 
     public String getAnswer_a() {
         return answer_a;
@@ -108,10 +118,7 @@ public class Question {
         this.id = id;
     }
 
-    public String getProblem() {
-
-        return problem;
-    }
+    public String getProblem() {return problem;}
 
     public String[] getPossibleAns() {
         return possibleAns;

@@ -19,46 +19,34 @@ import java.util.List;
  */
 @Controller
 public class AnswerDecisionEngineController {
+    private static int nextId = 0;
 
     @Autowired
     private QuestionDAO questionDAO;
 
-    String[] answers = new String[]{"Tokyo","Beijing","Pyeongchang","Almaty"};
-    Question question = new Question("Which city is the host of 2022 Winter Olympic Games?", answers, 1);
+    /**
+     * Gets the next question in the database (by incrementing, this needs to change)
+     * @return question object
+     */
     @RequestMapping(value = "/question", method = RequestMethod.GET)
     @ResponseBody
-    public Question getQuestion(@RequestParam (value = "id", defaultValue="0") Integer nextId){
-
-        ArrayList<Question> questionArrayList = (ArrayList<Question>) questionDAO.findAll();
-        ArrayList<Integer> keyArrayList = new ArrayList<>();
-        HashMap<Integer, Question> questionHashMap = new HashMap<>();
-        Integer incrementer = 0;
-
-        for(Question question: questionArrayList){
-            keyArrayList.add(question.getId());
-        }
-
-        for(Question _question: questionArrayList){
-            questionHashMap.put(_question.getId(),_question);
-        }
-
-        if (nextId == 0){
-            Question question = questionArrayList.get(0);
-        }else {
-            for(Integer integer: keyArrayList){
-                if(integer==nextId){
-                    incrementer = keyArrayList.indexOf(integer);
-                    incrementer++;
-                    nextId = keyArrayList.get(incrementer);
-                }
-            }
-            Question question = questionArrayList.get(nextId);
+    public Question getQuestion(){
+        Question question = questionDAO.findOne(++nextId);
+        if(question == null) {
+            nextId = 1;
+            question = questionDAO.findOne(nextId);
         }
         question.buildAnswerArray();
-
         return question;
     }
 
+    /**
+     * Takes in the id of the question and team, their answer and evaluates if it's correct
+     * @param questionID -- id of question in database
+     * @param teamID --  id of team in database
+     * @param answerIndex -- what that team selected for answer
+     * @return true if they were right, false if they weren't
+     */
     @RequestMapping(value="/answer", method = RequestMethod.GET)
     @ResponseBody
     public boolean sendAnswer(Integer questionID, Integer teamID, Integer answerIndex){
